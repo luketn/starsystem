@@ -31,7 +31,7 @@ public class StarSystem extends JPanel implements ActionListener {
         ArrayList<Planet> planets = new ArrayList<Planet>();
         Random random = new Random();
         int numberOfPlanets = random.nextInt(maxPlanets) + 1;
-        for (int i = 1; i < numberOfPlanets; i++) {
+        for (int i = 1; i <= numberOfPlanets; i++) {
             planets.add(Planet.random(star, i));
         }
         return planets;
