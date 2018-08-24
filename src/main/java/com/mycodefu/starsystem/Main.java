@@ -6,10 +6,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Main implements KeyListener {
-    final JFrame jFrame;
-    StarSystem comp;
+    private final JFrame jFrame;
+    private StarSystem starSystem;
 
-    public Main() {
+    private Main() {
         this.jFrame = new JFrame("Star System");
         jFrame.setFocusable(true);
         jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -18,12 +18,21 @@ public class Main implements KeyListener {
     }
 
     private void createStarSystem() {
-        if (comp != null) {
-            jFrame.remove(comp);
+        if (starSystem != null) {
+            jFrame.remove(starSystem);
         }
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        comp = new StarSystem(new Rectangle(0, 0, screenSize.width, screenSize.height));
-        jFrame.add(comp);
+        int width;
+        int height;
+        if (jFrame.getBounds().width > 0) {
+            width = jFrame.getBounds().width;
+            height = jFrame.getBounds().height;
+        } else {
+            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+            width = screenSize.width;
+            height = screenSize.height;
+        }
+        starSystem = new StarSystem(new Rectangle(0, 0, width, height));
+        jFrame.add(starSystem);
     }
 
     private void show() {
