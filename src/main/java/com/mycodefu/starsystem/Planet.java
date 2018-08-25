@@ -5,7 +5,6 @@ import java.util.Random;
 
 public class Planet extends Body {
     private final String name;
-    private final Color planetColor;
     private final int diameter;
     private final boolean rings;
     private final Color ringColor;
@@ -17,23 +16,14 @@ public class Planet extends Body {
     private static final Random random = new Random();
 
     private Planet(String name, Color planetColor, int diameter, boolean rings, Color ringColor, Star star, int distanceFromStar, double angle) {
-        super(planetColor, diameter, calculateX(star, distanceFromStar, angle), calculateY(star, distanceFromStar, angle));
+        super(name, planetColor, diameter, calculateX(star, distanceFromStar, angle), calculateY(star, distanceFromStar, angle));
         this.name = name;
-        this.planetColor = planetColor;
         this.diameter = diameter;
         this.rings = rings;
         this.ringColor = ringColor;
         this.star = star;
         this.distanceFromStar = distanceFromStar;
         this.angle = angle;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Color getPlanetColor() {
-        return planetColor;
     }
 
     public boolean hasRings() {

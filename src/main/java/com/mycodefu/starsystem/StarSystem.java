@@ -50,20 +50,26 @@ public class StarSystem extends JPanel implements ActionListener {
             star.draw(g);
 
             int legendX = this.getWidth() - 150;
-            g.drawString("Planet Names:", legendX, 30);
+
+            int starLegendTop = 30;
+            String starInfo = String.format("%s (%d planet%s)", star.getName(), planets.size(), planets.size()==1 ? "" : "s");
+            g.drawString("Star system:", legendX, starLegendTop);
+            g.drawString(starInfo, legendX, starLegendTop + 20);
+
+            int planetLegendTop = starLegendTop +50;
+            g.drawString("Planet Names:", legendX, planetLegendTop);
 
             for (int i = 0; i < planets.size(); i++) {
                 Planet planet = planets.get(i);
                 planet.draw(g);
 
-                g.setColor(planet.getPlanetColor());
+                g.setColor(planet.getColor());
                 String planetInfo = String.format("%s%s", planet.getName(), planet.hasRings() ? " (has rings)" : "");
 
-                g.drawString(planetInfo, legendX, 30 + 15 * (i+1) + 5);
+                g.drawString(planetInfo, legendX, planetLegendTop + 15 * (i+1) + 5);
             }
-            for (Planet planet : planets) {
 
-            }
+
         }
     }
 

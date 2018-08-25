@@ -13,8 +13,8 @@ public class Star extends Body {
     private static double minDiameterRatio = 50d/1024d;
     private static double maxDiameterRatio = 80d/1024d;
 
-    private Star(Color color, int diameter, Rectangle bounds) {
-        super(color, diameter, bounds.width / 2, bounds.height / 2);
+    private Star(String name, Color color, int diameter, Rectangle bounds) {
+        super(name, color, diameter, bounds.width / 2, bounds.height / 2);
     }
 
     public static Star random(Rectangle bounds) {
@@ -27,6 +27,6 @@ public class Star extends Body {
         int minDiameterInBounds = (int)(minDiameterRatio * bounds.width);
         int diameter = randomNumbers.nextInt(maxDiameterInBounds - minDiameterInBounds) + minDiameterInBounds;
 
-        return new Star(starColor, diameter, bounds);
+        return new Star(RandomNameGenerator.generateName(), starColor, diameter, bounds);
     }
 }
