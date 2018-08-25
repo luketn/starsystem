@@ -48,8 +48,21 @@ public class StarSystem extends JPanel implements ActionListener {
             g.fillRect(0, 0, this.getWidth(), this.getHeight());
 
             star.draw(g);
-            for (Planet planet : planets) {
+
+            int legendX = this.getWidth() - 150;
+            g.drawString("Planet Names:", legendX, 30);
+
+            for (int i = 0; i < planets.size(); i++) {
+                Planet planet = planets.get(i);
                 planet.draw(g);
+
+                g.setColor(planet.getPlanetColor());
+                String planetInfo = String.format("%s%s", planet.getName(), planet.hasRings() ? " (has rings)" : "");
+
+                g.drawString(planetInfo, legendX, 30 + 15 * (i+1) + 5);
+            }
+            for (Planet planet : planets) {
+
             }
         }
     }

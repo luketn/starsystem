@@ -36,6 +36,10 @@ public class Planet extends Body {
         return planetColor;
     }
 
+    public boolean hasRings() {
+        return rings;
+    }
+
     public Color getRingColor() {
         return ringColor;
     }
